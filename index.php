@@ -53,7 +53,7 @@ require_once("config.php");
     </div>
 
     <footer id="footer">
-        <div class="social-container">
+        <div id="social-container">
             <ul>
                 <li>
                     <a href=""><i class="fab fa-facebook-square"></i></a>
@@ -68,8 +68,8 @@ require_once("config.php");
         </div>
         <div id="footer-links-container">
             <ul>
-                <li><a href="">Adcionar Filmes</a></li>
-                <li><a href="">Adcionar crítica</a></li>
+                <li><a href="">Adicionar Filmes</a></li>
+                <li><a href="">Adicionar crítica</a></li>
                 <li><a href="">Entrar / Registrar</a></li>
             </ul>
         </div>
