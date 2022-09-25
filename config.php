@@ -1,6 +1,6 @@
 <?php
 
-$db_name = "moviestar";
+$db_name = "test";
 $db_host = "localhost";
 $db_user = "root";
 $db_pass = "";
