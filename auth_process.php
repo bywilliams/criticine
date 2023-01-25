@@ -3,7 +3,10 @@
 require_once("globals.php");
 require_once("config.php");
 require_once("models/User.php");
+require_once("models/Message.php");
 require_once("dao/UserDAO.php");
+
+$message = new Message($BASE_URL);
 
 // Resgata o tipo do formulário ex: register | login
 $type = filter_input(INPUT_POST, "type");
@@ -20,8 +23,8 @@ if ($type === 'register') {
     if ($name && $lastname && $email && $password) {
         echo"<script>alert('Ok dados preenchidos');</script>";
     }else {
-        echo"<script>alert('Preencha os dados antes de continuar');</script>";
-        //header("Location: auth.php");
+        // envia msg de erro, dados faltantes
+        $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
 
 }else if ($type === 'login') {
