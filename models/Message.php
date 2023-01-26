@@ -11,7 +11,14 @@ class Message {
 
     // pega uma mensagem do sistema
     public function getMessage() {
-
+        if (!empty($_SESSION["msg"])) {
+            return [
+                "msg" => $_SESSION["msg"],
+                "type" => $_SESSION["type"],
+            ];
+        }else {
+            return false;
+        }
     }
 
     // insere uma mensagem no sistema
