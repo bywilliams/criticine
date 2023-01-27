@@ -38,6 +38,7 @@ class Message {
 
     // limpa a mensagem do sistema
     public function clearMessage(){
-
+        $_SESSION["msg"] = "";
+        $_SESSION["type"] = "";
     }
 }
