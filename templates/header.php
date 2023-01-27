@@ -9,7 +9,7 @@ $message = new Message($BASE_URL);
 $flassMessage = $message->getMessage();
 
 if (!empty($flassMessage)) {
-    # limpa a mensagem
+    $message->clearMessage();
 }
 
 ?>
