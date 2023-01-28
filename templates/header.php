@@ -34,8 +34,8 @@ if (!empty($flassMessage)) {
     <header>
         <nav id="main-navbar" class="navbar navbar-expand-lg">
             <a href="<?=$BASE_URL?>" class="navbar-brand">
-                <img src="<?=$BASE_URL?>img/logo.svg" alt="MovieStar" id="logo">
-                <span id="moviestar-title">MovieStar</span>
+                <img src="<?=$BASE_URL?>img/logo.png" alt="MovieStar" id="logo">
+                <span id="moviestar-title">Movie Star </span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="navigation">
                 <i class="fas fas-bars"></i>

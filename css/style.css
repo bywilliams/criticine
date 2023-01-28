@@ -17,7 +17,7 @@
 }
 
 #main-navbar {
-    background-color: #121212;
+    background-color: #1c1c1c;
 }
 
 #search-form {
@@ -116,6 +116,21 @@
     margin: 30px auto;
 }
 
+/* Look Password register form */
+.p-viewer {
+    z-index: 9999;
+    position: absolute;
+    top: 20%;
+    right: 20px;
+    cursor: pointer;
+}
+
+.fa-eye{
+    color: #000;
+}
+/* end Look Password register form */
+
+
 .card-btn {
     color: #000;
     background-color: #f4c518;
@@ -132,7 +147,7 @@
 /* Footer */
 
 #footer {
-    background-color: #000;
+    background-color: #1c1c1c;
     color: #fff;
     text-align: center;
     margin: 0;
