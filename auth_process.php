@@ -28,7 +28,7 @@ if ($type === 'register') {
             if(password_strength($password)){
                 echo "password forte";
             }else{
-                echo "password fraco";
+                $message->setMessage("A senha deve possuir ao menos 8 caracteres, sendo pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 simbolo.", "error", "back");
             }
 
             // echo "<script>alert('Ok as senhas são iguais');</script>";
