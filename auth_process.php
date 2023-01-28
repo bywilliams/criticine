@@ -5,6 +5,7 @@ require_once("config.php");
 require_once("models/User.php");
 require_once("models/Message.php");
 require_once("dao/UserDAO.php");
+require_once("utils/check_password.php");
 
 $message = new Message($BASE_URL);
 
@@ -21,12 +22,23 @@ if ($type === 'register') {
     // Verificação de dados mínimos
 
     if ($name && $lastname && $email && $password) {
-        echo"<script>alert('Ok dados preenchidos');</script>";
-    }else {
+
+        if ($password === $confirmPassword) {
+            
+            if(password_strength($password)){
+                echo "password forte";
+            }else{
+                $message->setMessage("A senha deve possuir ao menos 8 caracteres, sendo pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 simbolo.", "error", "back");
+            }
+
+            // echo "<script>alert('Ok as senhas são iguais');</script>";
+        } else {
+            // envia msg de erro, senhas não conferem 
+            $message->setMessage("As senhas não são iguais.", "error", "back");
+        }
+    } else {
         // envia msg de erro, dados faltantes
         $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
-
-}else if ($type === 'login') {
-
+} else if ($type === 'login') {
 }
