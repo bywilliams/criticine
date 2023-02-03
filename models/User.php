@@ -3,12 +3,20 @@
 Class User {
     public $id;
     public $name;
-    public $lastName;
+    public $lastname;
     public $email;
     public $password;
     public $image;
     public $token;
     public $bio;
+
+    public function generateToken(){
+        return bin2hex(random_bytes(50)); // random cria a string, bin2hex modifica a String deixando mais complexa
+    }
+
+    public function generatePassword($password){
+        return password_hash($password, PASSWORD_DEFAULT);
+    }
 
 }
 

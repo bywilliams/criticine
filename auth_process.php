@@ -7,6 +7,8 @@ require_once("models/Message.php");
 require_once("dao/UserDAO.php");
 require_once("utils/check_password.php");
 
+$userDAO = new UserDAO($conn, $BASE_URL);
+
 $message = new Message($BASE_URL);
 
 // Resgata o tipo do formulário ex: register | login
@@ -24,10 +26,35 @@ if ($type === 'register') {
     if ($name && $lastname && $email && $password) {
 
         if ($password === $confirmPassword) {
-            
-            if(password_strength($password)){
-                echo "password forte";
-            }else{
+
+            if (password_strength($password)) {
+
+                // Checa se e-mail já existe no sistema
+                if ($userDAO->findByEmail($email) === false) {
+
+                    $user = new User();
+
+                    // Criação de token e senha 
+                    $userToken = $user->generateToken();
+                    $finalPassword = $user->generatePassword($password);
+                    
+                    // cria o usuário
+                    $user->name = $name;
+                    $user->lastname = $lastname;
+                    $user->email = $email;
+                    $user->password = $finalPassword; //password final em hash
+                    $user->token = $userToken;
+
+                    $auth = true;
+
+                    $userDAO->create($user, $auth);
+
+                } else {
+
+                    //Envia mensagem de erro, usuário já existe
+                    $message->setMessage("Usuário já cadastrado, tente outro e-mail.", "error", "back");
+                }
+            } else {
                 $message->setMessage("A senha deve possuir ao menos 8 caracteres, sendo pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 simbolo.", "error", "back");
             }
 
@@ -41,4 +68,5 @@ if ($type === 'register') {
         $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
 } else if ($type === 'login') {
+    
 }
