@@ -73,15 +73,17 @@ require_once("models/Message.php");
                     
                     // retorna o user para o front
                     return $user;
-                }else {
+                }else if ($protected){
 
                      // Redireciona usuário não autenticado
                     $this->message->setMessage("É necessário estar atenticado para acessar esta página!", "error", "index.php");
                 }
 
-            }else {
-                return false;
-            }
+            }else if ($protected){
+
+                // Redireciona usuário não autenticado
+               $this->message->setMessage("É necessário estar atenticado para acessar esta página!", "error", "index.php");
+           }
 
         }
 
@@ -155,6 +157,18 @@ require_once("models/Message.php");
             }
 
         }
+
+
+        public function destroyToken(){
+
+            // Remove o token da sessão
+            $_SESSION["token"] = "";
+
+            // redireciona e apresenta a mesnagem de sucesso
+            $this->message->setMessage("Logout efetuado com sucesso.","success", "index.php");
+
+        }
+
         public function changePassword(User $user) {
 
         }
