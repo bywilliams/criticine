@@ -58,14 +58,37 @@ require_once("models/Message.php");
         public function update(User $user) {
 
         }
+
         public function verifyToken($protected = false) {
 
+            if (!empty($_SESSION["token"])) {
+                
+                // Pega o token da Session
+                $token = $_SESSION["token"];
+
+                // verifica se o token existe
+                $user = $this->findByToken($token);
+
+                if ($user) {
+                    
+                    // retorna o user para o front
+                    return $user;
+                }else {
+
+                     // Redireciona usuário não autenticado
+                    $this->message->setMessage("É necessário estar atenticado para acessar esta página!", "error", "index.php");
+                }
+
+            }else {
+                return false;
+            }
+
         }
+
         public function setTokenSession($token, $redirect = true) {
             
             // Salvar token na Sessão
             $_SESSION["token"] = $token;
-
 
             if ($redirect) {
                 
@@ -102,10 +125,34 @@ require_once("models/Message.php");
             }
 
         }
+
         public function findById($id) {
 
         }
+
         public function findByToken($token) {
+
+             // checa se existe valor na variável por segurança
+             if ($token != "") {
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+                $stmt->bindParam(":token", $token);
+                $stmt->execute();
+
+                // verifica se a query retornou algo, se encontrar retorna o usuário
+                if ($stmt->rowCount() > 0) {
+                    
+                    $data = $stmt->fetch();
+                    $user = $this->buildUser($data);
+
+                    return $user;
+
+                }else {
+                    return false;
+                }
+
+            }else {
+                return false;
+            }
 
         }
         public function changePassword(User $user) {
