@@ -37,7 +37,7 @@ if ($type === 'register') {
                     // Criação de token e senha 
                     $userToken = $user->generateToken();
                     $finalPassword = $user->generatePassword($password);
-                    
+
                     // cria o usuário
                     $user->name = $name;
                     $user->lastname = $lastname;
@@ -48,7 +48,6 @@ if ($type === 'register') {
                     $auth = true;
 
                     $userDAO->create($user, $auth);
-
                 } else {
 
                     //Envia mensagem de erro, usuário já existe
@@ -68,5 +67,25 @@ if ($type === 'register') {
         $message->setMessage("Por favor, preencha todos os campos.", "error", "back");
     }
 } else if ($type === 'login') {
-    
+
+    $email = filter_input(INPUT_POST, "email");
+    $password = filter_input(INPUT_POST, "password");
+
+    // Tenta autenticar usuário
+    if ($userDAO->authenticateUser($email, $password)) {
+
+
+
+        // Dá as boas vindas para o usuário que efetuou o login
+        $message->setMessage("Seja bem-vindo!", "success", "editProfile.php");
+
+        // redireciona usuário, caso não conseguir atenticar
+
+    } else {
+        // envia msg de erro, usuário ou senha não encontrados
+        $message->setMessage("E-mail e/ou senha inválidos.", "error", "back");
+    }
+} else {
+    // se tentar algo estranho expulsa para a index
+    $message->setMessage("Informações inválidas.", "error", "index.php");
 }

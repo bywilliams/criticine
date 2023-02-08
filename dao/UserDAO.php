@@ -55,7 +55,33 @@ require_once("models/Message.php");
                 $this->setTokenSession($user->token);
             }
         }
-        public function update(User $user) {
+        public function update(User $user, $redirect = true) {
+
+            $stmt = $this->conn->prepare("UPDATE users SET
+                name = :name,
+                lastname = :lastname,
+                email = :email,
+                image = :image,
+                bio = :bio,
+                token = :token
+                WHERE id = :id
+            ");
+
+            $stmt->bindParam(":name", $user->name);
+            $stmt->bindParam(":lastname", $user->lastname);
+            $stmt->bindParam(":email", $user->email);
+            $stmt->bindParam(":image", $user->image);
+            $stmt->bindParam(":bio", $user->bio);
+            $stmt->bindParam(":token", $user->token);
+            $stmt->bindParam(":id", $user->id);
+
+            $stmt->execute();
+
+            if ($redirect) {
+                
+                // Redireciona para o perfeil do usuário
+                $this->message->setMessage("Dados atualizados com sucesso!", "success", "editProfile.php");
+            }
 
         }
 
@@ -99,7 +125,35 @@ require_once("models/Message.php");
             }
 
         }
-        public function authenticatorUser($email, $password) {
+        public function authenticateUser($email, $password) {
+
+            $user = $this->findByEmail($email);
+
+            // se encontrou o e-mail no BD
+            if ($user) {
+                
+                // Checar se as senhas batem através da função password_verify()
+                if (password_verify($password, $user->password)) {
+                    
+                    // Gera um token e inseri na session
+                    $token = $user->generateToken();
+
+                    $this->setTokenSession($token, false); // 
+
+                    // Atualizar token no usuário
+                    $user->token = $token; // primeiro no objeto
+
+                    $this->update($user, false); // faz o Update pq foi gerado um novo token
+
+                    return true;
+                    
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
 
         }
         public function findByEmail($email) {
