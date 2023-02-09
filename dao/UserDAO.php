@@ -55,6 +55,7 @@ require_once("models/Message.php");
                 $this->setTokenSession($user->token);
             }
         }
+
         public function update(User $user, $redirect = true) {
 
             $stmt = $this->conn->prepare("UPDATE users SET
@@ -125,6 +126,7 @@ require_once("models/Message.php");
             }
 
         }
+
         public function authenticateUser($email, $password) {
 
             $user = $this->findByEmail($email);
@@ -156,6 +158,7 @@ require_once("models/Message.php");
             }
 
         }
+        
         public function findByEmail($email) {
             
             // checa se existe valor na variável por segurança

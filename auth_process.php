@@ -57,7 +57,6 @@ if ($type === 'register') {
                 $message->setMessage("A senha deve possuir ao menos 8 caracteres, sendo pelo menos 1 letra maiúscula, 1 minúscula, 1 número e 1 simbolo.", "error", "back");
             }
 
-            // echo "<script>alert('Ok as senhas são iguais');</script>";
         } else {
             // envia msg de erro, senhas não conferem 
             $message->setMessage("As senhas não são iguais.", "error", "back");
@@ -85,6 +84,7 @@ if ($type === 'register') {
         // envia msg de erro, usuário ou senha não encontrados
         $message->setMessage("E-mail e/ou senha inválidos.", "error", "back");
     }
+
 } else {
     // se tentar algo estranho expulsa para a index
     $message->setMessage("Informações inválidas.", "error", "index.php");
