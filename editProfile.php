@@ -19,7 +19,7 @@ if ($userData->image == "") {
 ?>
 
 
-<div id="main-container" class="container-fluid">
+<div id="main-container" class="container-fluid edit-profile-page">
     <div class="col-md-12">
         <form action="<?= $BASE_URL ?>user_process.php" method="post" enctype="multipart/form">
             <input type="hidden" name="type" value="update">
@@ -42,7 +42,7 @@ if ($userData->image == "") {
                         <input type="text" name="email" id="email" readonly class="form-control disable"
                             placeholder="Digite seu e-mail" value="<?= $userData->email ?>">
                     </div>
-                    <input type="submit" class="btn form-btn" value="Alterar">
+                    <input type="submit" class="btn card-btn" value="Alterar">
                 </div>
                 <div class="col-md-4">
                     <div id="profile-image-container"
@@ -76,7 +76,7 @@ if ($userData->image == "") {
                         <input type="password" name="confirmPassword" id="confirmPassword" class="form-control"
                             placeholder="Confirme sua nova senha">
                     </div>
-                    <input type="submit" class="btn form-btn" value="Alterar Senha">
+                    <input type="submit" class="btn card-btn" value="Alterar Senha">
                 </form>
             </div>
         </div>
