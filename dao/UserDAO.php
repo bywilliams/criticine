@@ -228,5 +228,21 @@ require_once("models/Message.php");
 
         public function changePassword(User $user) {
 
+            $stmt = $this->conn->prepare("UPDATE users SET
+                password = :password
+                WHERE id = :id
+            ");
+
+            $stmt->bindParam(":password", $user->password);
+            $stmt->bindParam(":id", $user->id);
+           
+            $stmt->execute();
+
+            // Se a query rodar normalmente apresenta a mensagem de sucesso
+            if ($stmt) {
+                
+                $this->message->setMessage("Senha alterada com sucesso!", "success", "editProfile.php");
+            }
+
         }
     }
