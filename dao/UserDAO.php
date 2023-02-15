@@ -238,11 +238,8 @@ require_once("models/Message.php");
            
             $stmt->execute();
 
-            // Se a query rodar normalmente apresenta a mensagem de sucesso
-            if ($stmt) {
-                
-                $this->message->setMessage("Senha alterada com sucesso!", "success", "editProfile.php");
-            }
+            // Redireciona e apresenta a mensagem de sucesso
+            $this->message->setMessage("Senha alterada com sucesso!", "success", "editProfile.php");
 
         }
     }

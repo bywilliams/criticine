@@ -72,10 +72,11 @@ if ($type == "update") {
 
 } else if ($type == "changePassword") {
 
-    $userData = $userDAO->verifyToken();
-
     $password = filter_input(INPUT_POST, "password");
     $confirmPassword = filter_input(INPUT_POST, "confirmPassword");
+
+    $userData = $userDAO->verifyToken();
+    $id = $userData->id;
 
     if ($password) {
 
@@ -88,6 +89,7 @@ if ($type == "update") {
                     $password_changed = $user->generatePassword($password);
 
                     $userData->password = $password_changed;
+                    $userData->id = $id;
         
                     $userDAO->changePassword($userData);
 
@@ -107,3 +109,6 @@ if ($type == "update") {
 } else {
     $message->setMessage("Informações inválidas.", "error", "index.php");
 }
+
+
+
