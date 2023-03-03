@@ -1,5 +1,5 @@
 <?php
-require_once("globals.php");
+require_once("models/Movie.php");
 require_once("models/Message.php");
 
 
@@ -16,6 +16,19 @@ Class MovieDAO implements MovieDAOInterface {
     }
 
     public function buildMovie($data) {
+
+        $movie = new Movie();
+
+        $movie->id = $data['id'];
+        $movie->titles = $data['titles'];
+        $movie->description = $data['description'];
+        $movie->image = $data['image'];
+        $movie->trailer = $data['trailer'];
+        $movie->category = $data['category'];
+        $movie->length = $data['length'];
+        $movie->users_id = $data['user_id'];
+
+        return $movie;
 
     }
 

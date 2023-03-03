@@ -9,7 +9,7 @@
         public $trailer;
         public $category;
         public $length;
-        public $user_id;
+        public $users_id;
 
         public function imageGenerateName(){
             return bin2hex(random_bytes(60)). ".jpg";
