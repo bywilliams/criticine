@@ -20,7 +20,7 @@ Class MovieDAO implements MovieDAOInterface {
         $movie = new Movie();
 
         $movie->id = $data['id'];
-        $movie->titles = $data['titles'];
+        $movie->title = $data['titles'];
         $movie->description = $data['description'];
         $movie->image = $data['image'];
         $movie->trailer = $data['trailer'];

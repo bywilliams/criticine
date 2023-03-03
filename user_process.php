@@ -36,11 +36,11 @@ if ($type == "update") {
         $image = $_FILES["image"];
 
         // tipos permitidos
-        $imagesType = ["image/jpg", "image/jpeg", "image/png"];
+        $imagesTypes = ["image/jpg", "image/jpeg", "image/png"];
         $jpgArray = ["image/jpg", "image/jpeg"];
 
         // Checagem de tipo de imagem
-        if (in_array($image["type"], $imagesType)) {
+        if (in_array($image["type"], $imagesTypes)) {
             
             if (in_array($image["type"], $jpgArray)) {
                
