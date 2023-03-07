@@ -35,6 +35,7 @@ if ($type == "create") {
         $movie->length = $length;
         $movie->category = $category;
         $movie->trailer = $trailer;
+        $movie->users_id = $userData->id; 
 
         // Upload de imagem do filme
         if (isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
@@ -65,9 +66,11 @@ if ($type == "create") {
                 $message->setMessage("Tipo inválido de imagem, insira imagens do tipo png ou jpg.", "error", "back");
             }
 
-            // Salva o filme no BD
-            $movieDao->create($movie);
+           
         }
+
+         // Salva o filme no BD
+         $movieDao->create($movie);
 
     }else {
         $message->setMessage("Você precisa adicionar pelo menos: titulo, descrição e categoria!", "error", "back");
