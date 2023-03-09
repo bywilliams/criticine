@@ -20,13 +20,13 @@ Class MovieDAO implements MovieDAOInterface {
         $movie = new Movie();
 
         $movie->id = $data['id'];
-        $movie->title = $data['titles'];
+        $movie->title = $data['title'];
         $movie->description = $data['description'];
         $movie->image = $data['image'];
         $movie->trailer = $data['trailer'];
         $movie->category = $data['category'];
         $movie->length = $data['length'];
-        $movie->users_id = $data['user_id'];
+        $movie->users_id = $data['users_id'];
 
         return $movie;
 
@@ -37,6 +37,24 @@ Class MovieDAO implements MovieDAOInterface {
     }
 
     public function getLatestMovies() {
+
+        $movies = [];
+
+        $stmt = $this->conn->query("SELECT * FROM movies ORDER BY id DESC");
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+
+            $moviesArray = $stmt->fetchAll();
+
+            foreach($moviesArray as $movie){
+                $movies[] = $this->buildMovie($movie);
+            }
+
+        }
+
+        return $movies;
 
     }
     public function getMoviesByCategory($category) {
