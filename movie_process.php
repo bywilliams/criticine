@@ -29,17 +29,17 @@ if ($type == "create") {
 
     // Validação minima de dados
     if (!empty($title) && !empty($description) && !empty($category)) {
-        
+
         $movie->title = $title;
         $movie->description = $description;
         $movie->length = $length;
         $movie->category = $category;
         $movie->trailer = $trailer;
-        $movie->users_id = $userData->id; 
+        $movie->users_id = $userData->id;
 
         // Upload de imagem do filme
         if (isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])) {
-            
+
             $image = $_FILES["image"];
             // tipos permitidos
             $imagesTypes = ["image/jpg", "image/jpeg", "image/png"];
@@ -50,7 +50,7 @@ if ($type == "create") {
                 // Chea se imagem é JPG
                 if (in_array($image["type"], $jpgArray)) {
                     $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-                }else {
+                } else {
                     // Cria como PNG
                     $imageFile = imagecreatefrompng($image["tmp_name"]);
                 }
@@ -62,21 +62,20 @@ if ($type == "create") {
 
                 $movie->image = $imageName;
 
-            }else {
+            } else {
                 $message->setMessage("Tipo inválido de imagem, insira imagens do tipo png ou jpg.", "error", "back");
             }
 
-           
         }
 
-         // Salva o filme no BD
-         $movieDao->create($movie);
+        // Salva o filme no BD
+        $movieDao->create($movie);
 
-    }else {
+    } else {
         $message->setMessage("Você precisa adicionar pelo menos: titulo, descrição e categoria!", "error", "back");
     }
 
-    
-}else {
+
+} else {
     $message->setMessage("Informações inválidas.", "error", "index.php");
 }
