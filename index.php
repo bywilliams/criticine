@@ -21,6 +21,7 @@
             <?php foreach ($latestMovies as $movie): ?>
                 <?php require("templates/movie_card.php");?>
             <?php endforeach; ?>
+
             <?php if(count($latestMovies) === 0): ?>
                 <p class="empty-list">AInda não há filmes cadastrados</p>
             <?php endif; ?>
@@ -32,6 +33,7 @@
             <?php foreach ($actionMovies as $movie): ?>
                 <?php require("templates/movie_card.php");?>
             <?php endforeach; ?>
+
             <?php if(count($actionMovies) === 0): ?>
                 <p class="empty-list">Ainda não há filmes de ação cadastrados</p>
             <?php endif; ?>
@@ -43,6 +45,7 @@
             <?php foreach ($comedyMovies as $movie): ?>
                 <?php require("templates/movie_card.php");?>
             <?php endforeach; ?>
+            
             <?php if(count($comedyMovies) === 0): ?>
                 <p class="empty-list">Ainda não há filmes de comédia cadastrados</p>
             <?php endif; ?>
