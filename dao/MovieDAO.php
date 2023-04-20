@@ -83,6 +83,28 @@ Class MovieDAO implements MovieDAOInterface {
     }
     public function getMoviesByUserId($id) {
 
+        $movies = [];
+
+        $stmt = $this->conn->prepare("SELECT * FROM movies
+                            WHERE users_id = :id
+                            ");
+        $stmt->bindParam(':id', $id);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+
+            $moviesArray = $stmt->fetchAll();
+
+            foreach($moviesArray as $movie){
+                $movies[] = $this->buildMovie($movie);
+            }
+
+        }
+
+        return $movies;
+
+
     }
     public function findById($id) {
 
