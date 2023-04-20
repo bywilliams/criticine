@@ -43,7 +43,7 @@ $userMovies = $movieDao->getMoviesByUserId($userData->id);
                         <a href="<?= $BASE_URL ?>editmovie.php?id=<?= $movie->id ?>" class="edit-btn">
                             <i class="far fa-edit"></i> Editar
                         </a>
-                        <form action="<?= $BASE_URL ?>movie_process.php">
+                        <form action="<?= $BASE_URL ?>movie_process.php" method="GET">
                         <input type="hidden" name="type" value="delete">
                         <input type="hidden" name="id" value="<?= $movie->id ?>">
                             <button class="delete-btn">
