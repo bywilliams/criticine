@@ -17,7 +17,7 @@ $type = filter_input(INPUT_POST, "type");
 //resgata os dados do usuário
 $userData = $userDAO->verifyToken();
 
-if ($type == "create") {
+if ($type === "create") {
 
     $title = filter_input(INPUT_POST, "title");
     $description = filter_input(INPUT_POST, "description");
@@ -75,6 +75,28 @@ if ($type == "create") {
         $message->setMessage("Você precisa adicionar pelo menos: titulo, descrição e categoria!", "error", "back");
     }
 
+
+} else if ($type === "delete"){
+
+    // Recebe os dados do form
+    $id = filter_input(INPUT_POST, "id");
+
+    $movie = $movieDao->findById($id);
+
+    if($movie) {
+        // Verificar se o filme é do usuário
+        if($movie->users_id === $userData->id) {
+
+            $movieDao->destroy($movie->id);
+
+        }else {
+            $message->setMessage("Informações inválidas.", "error", "index.php");
+        }
+
+    }else {
+        $message->setMessage("Informações inválidas.", "error", "index.php");
+    }
+    
 
 } else {
     $message->setMessage("Informações inválidas.", "error", "index.php");
