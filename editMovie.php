@@ -46,7 +46,7 @@ if($movie->image == "") {
                     <?= $movie->title ?>
                 </h1>
                 <p class="page-description">Altere os dados do filme no formulário abaixo:</p>
-                <form id="edit-movie-form" action="" method="post" enctype="multipart.form-data"></form>
+                <form id="edit-movie-form" action="<?= $BASE_URL ?>movie_process.php" method="post" enctype="multipart.form-data">
                 <input type="hidden" name="type" value="update">
                 <input type="hidden" name="id" value="<?= $movie->id ?>">
                 <div class="form-group">
@@ -84,7 +84,8 @@ if($movie->image == "") {
                     <textarea name="description" id="description" rows="5" class="form-control"
                         placeholder="Descreva o filme:"><?= $movie->description ?></textarea>
                 </div>
-                <input type="submit" value="Adicionar filme" class="btn card-btn">
+                <input type="submit" value="Editar filme" class="btn card-btn">
+                </form>
             </div>
             <div class="col-md-3">
                 <div class="movie-image-container" style="background-image: url('<?= $BASE_URL ?>img/movies/<?= $movie->image?>')"></div>
