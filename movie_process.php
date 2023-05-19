@@ -111,6 +111,7 @@ if ($type === "create") {
 
     $movie = $movieDao->findById($id);
 
+    // Verifica se encontrou filme
     if($movie) {
 
         // Verificar se o filme é do usuário
@@ -136,7 +137,7 @@ if ($type === "create") {
                     // Checa o tipo da imagem
                     if (in_array($image["type"], $imagesTypes)) {
 
-                        // Chea se imagem é JPG
+                        // Checa se imagem é JPG
                         if (in_array($image["type"], $jpgArray)) {
                             $imageFile = imagecreatefromjpeg($image["tmp_name"]);
                         } else {
@@ -144,7 +145,7 @@ if ($type === "create") {
                             $imageFile = imagecreatefrompng($image["tmp_name"]);
                         }
 
-                        // Ggerando o nome da imagem
+                        // gerando o nome da imagem
                         $imageName = $movie->imageGenerateName();
 
                         imagejpeg($imageFile, "./img/movies/" . $imageName, 100);
