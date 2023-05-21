@@ -85,9 +85,7 @@ Class MovieDAO implements MovieDAOInterface {
 
         $movies = [];
 
-        $stmt = $this->conn->prepare("SELECT * FROM movies
-                            WHERE users_id = :id
-                            ");
+        $stmt = $this->conn->prepare("SELECT * FROM movies WHERE users_id = :id");
         $stmt->bindParam(':id', $id);
 
         $stmt->execute();
@@ -104,8 +102,8 @@ Class MovieDAO implements MovieDAOInterface {
 
         return $movies;
 
-
     }
+    
     public function findById($id) {
 
         $movie = [];

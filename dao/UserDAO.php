@@ -186,7 +186,28 @@ require_once("models/Message.php");
         }
 
         public function findById($id) {
+            
+             // checa se existe valor na variável por segurança
+             if ($id != "") {
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+                $stmt->bindParam(":id", $id);
+                $stmt->execute();
 
+                // verifica se a query retornou algo
+                if ($stmt->rowCount() > 0) {
+                    
+                    $data = $stmt->fetch();
+                    $user = $this->buildUser($data);
+
+                    return $user;
+
+                }else {
+                    return false;
+                }
+
+            }else {
+                return false;
+            }
         }
 
         public function findByToken($token) {
