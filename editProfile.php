@@ -42,7 +42,6 @@ if ($userData->image == "") {
                         <input type="text" name="email" id="email" readonly class="form-control disable"
                             placeholder="Digite seu e-mail" value="<?= $userData->email ?>">
                     </div>
-                    <input type="submit" class="btn card-btn" value="Alterar">
                 </div>
                 <div class="col-md-4">
                     <div id="profile-image-container"
@@ -57,6 +56,7 @@ if ($userData->image == "") {
                         <textarea class="form-control" name="bio" id="bio" rows="5"
                             placeholder="Fale sobre quem você é, o que faz, onde trabalha..."><?= $userData->bio ?></textarea>
                     </div>
+                    <input type="submit" class="btn card-btn" value="Alterar">
                 </div>
             </div>
         </form>
