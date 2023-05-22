@@ -16,14 +16,14 @@
 
     <div id="main-container" class="container-fluid">
         <h2 class="section-title">Filmes novos</h2>
-        <p class="section-description">Veja as criticas dos últimos filmnes adicionados no Movie Star</p>
+        <p class="section-description">Veja as criticas dos últimos filmes adicionados no Movie Star</p>
         <div class="movies-container">
             <?php foreach ($latestMovies as $movie): ?>
                 <?php require("templates/movie_card.php");?>
             <?php endforeach; ?>
 
             <?php if(count($latestMovies) === 0): ?>
-                <p class="empty-list">AInda não há filmes cadastrados</p>
+                <p class="empty-list">Ainda não há filmes cadastrados</p>
             <?php endif; ?>
         </div>
 
