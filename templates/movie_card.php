@@ -11,8 +11,8 @@
     </div>
     <div class="card-body">
         <p class="card-rating">
-            <i class="fas fa-star"></i>
-            <span class="rating">9</span>
+            <i class="fas fa-star text-warning"></i>
+            <span class="rating"> <?= $movie->rating ?></span>
         </p>
         <h5 class="card-tile">
             <a href="<?= $BASE_URL ?>movie.php?id=<?= $movie->id ?>"><?= $movie->title ?></a>
