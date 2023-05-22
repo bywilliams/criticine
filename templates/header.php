@@ -31,7 +31,7 @@ $userData = $userDao->verifyToken(false);
     <title>MovieStar</title>
     <link rel="short icon" href="<?=$BASE_URL?>img/moviestar.ico">
     <!-- BootStrap -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"> 
     <!-- FontAewsome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
     <!-- Folha de estilo local -->
@@ -45,7 +45,7 @@ $userData = $userDao->verifyToken(false);
                 <span id="moviestar-title">Movie Star </span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="navigation">
-                <i class="fas fas-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <form action="<?= $BASE_URL ?>search.php" method="GET"  id="search-form" class="form-inline my-2 my-lg-0">
                 <input type="text" name="q" id="search"  class="form-control mr-sm-2" type="search" 
