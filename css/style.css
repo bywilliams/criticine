@@ -120,6 +120,7 @@
     margin-bottom: 30px;
     margin-left: 1%;
     margin-right: 1%;
+    border-radius: 20px 20px 0 0;
 }
 
 .movie-card .card-img-top {
@@ -127,6 +128,7 @@
     width: 100%;
     background-size: cover;
     background-position: center;
+    border-radius: 20px 20px 0 0;
 }
 
 .card-title {
@@ -134,8 +136,13 @@
 }
 
 .card-title a{
-    font-size: 16px;
+    font-size: 20px;
     color: #fff;
+    text-decoration: none;
+}
+
+.card-title a:hover{
+    color: #999;
 }
 
 .fas.fa-stars {
@@ -380,6 +387,10 @@
 
 .comment-title {
     color: #999;
+}
+
+#description {
+    text-align: justify;
 }
 
 /* End Movie */
