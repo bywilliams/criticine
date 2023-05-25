@@ -13,5 +13,5 @@ Applicação Web de avaliação de Filmes lançados
 &nbsp;
 
 ## Index dos Filmes
-![finance control](assets/index.png)
+![finance control](assets/index_new.png)
 &nbsp;
