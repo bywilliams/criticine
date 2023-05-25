@@ -7,3 +7,11 @@ Applicação Web de avaliação de Filmes lançados
 
 :heavy_exclamation_mark: Projeto ainda em fase de desenvolvimento :exclamation:
 
+
+## Cadastro e Login
+![finance control](assets/autenticate.png)
+&nbsp;
+
+## Index dos Filmes
+![finance control](assets/index.png)
+&nbsp;
