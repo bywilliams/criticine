@@ -28,7 +28,7 @@ $userData = $userDao->verifyToken(false);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MovieStar</title>
+    <title>Criticine</title>
     <link rel="short icon" href="<?=$BASE_URL?>img/moviestar.ico">
     <!-- BootStrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"> 
@@ -41,7 +41,7 @@ $userData = $userDao->verifyToken(false);
     <header>
         <nav id="main-navbar" class="navbar navbar-expand-lg">
             <a href="<?=$BASE_URL?>" class="navbar-brand">
-                <img src="<?=$BASE_URL?>img/logo.png" alt="MovieStar" id="logo">
+                <img src="<?=$BASE_URL?>img/logo_criticine.png" alt="Criticine" id="logo">
                 <span id="moviestar-title">CritiCine</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="navigation">

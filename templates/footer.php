@@ -14,9 +14,9 @@
         </div>
         <div id="footer-links-container">
             <ul>
-                <li><a href="">Adicionar Filmes</a></li>
+                <li><a href="newmovie.php">Adicionar Filmes</a></li>
                 <li><a href="">Adicionar crítica</a></li>
-                <li><a href="">Entrar / Registrar</a></li>
+                <li><a href="auth.php">Entrar / Registrar</a></li>
             </ul>
         </div>
         <p>&copy; 2023 ByWilliams</p>
